@@ -9,7 +9,7 @@
 #include "minilibx_macos/mlx.h"
 
 #include "math.h"
-
+#include "stdio.h"
 typedef struct s_ili
 {
 	int number;

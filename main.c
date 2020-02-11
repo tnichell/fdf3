@@ -1,6 +1,5 @@
 
 #include "fdf.h"
-#include "stdio.h"
 
 int deal_key(int key, fdf *data)
 {
@@ -30,12 +29,31 @@ int deal_key(int key, fdf *data)
 	return (0);
 }
 
+void    printfmap(fdf *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < data->height)
+	{
+		j = 0;
+		while (j < data->width)
+		{
+			printf("%d", data->z_matrix[i][j].color);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
 int main(int argc, char **argv)
 {
 	fdf *data;
 
 	data = (fdf*)malloc(sizeof(fdf));
 	read_file(argv[1], data);
+	//printfmap(data);
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, 1000, 1000, "FDF");
 	data->zoom = 20;
@@ -45,13 +63,8 @@ int main(int argc, char **argv)
 	data->tettay = 0;
 	data->tettaz = 0;
 	data->zoomz = 10;
-
-	//printf("height = %d, width = %d\n", data->height, data->width);
-	//bresenham(10, 10, 600, 300, data);
 	draw(data);
-	printf("1");
 	mlx_hook(data->win_ptr, 2, 0, deal_key, data);
-	//mlx_key_hook(data->win_ptr, deal_key, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);
 }
