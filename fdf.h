@@ -10,6 +10,7 @@
 
 #include "math.h"
 #include "stdio.h"
+#define TEXT_COLOR  0xffffff
 typedef struct s_ili
 {
 	int number;
@@ -18,6 +19,8 @@ typedef struct s_ili
 
 typedef struct s_fdf
 {
+	int max;
+	int min;
 	int width;
 	int height;
 	t_ili **z_matrix;
@@ -41,8 +44,9 @@ void isometricz(float *x, float *y, float z, float tetta);
 void isometricy(float *x, float y, float *z, float tetta);
 void isometricx(float x, float *y, float *z, float tetta);
 float   mod(float i);
-void    read_file(char *data, fdf *data2);
+void    read_file(char *data, fdf **data2);
 void    bresenham(fdf *data);
 void 	draw(fdf *data);
+void	print_menu(fdf *fdf);
 
 #endif //FDF_H

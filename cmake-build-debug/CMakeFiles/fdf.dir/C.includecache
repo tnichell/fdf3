@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/draw.c
+fdf.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/fdf.h
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/draw2.c
+fdf.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/fdf.h
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/fdf.h
+libft/libft.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/libft/libft.h
+minilibx_macos/mlx.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/minilibx_macos/mlx.h
+math.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/math.h
+stdio.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/stdio.h
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/libft/libft.h
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/main.c
+fdf.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/fdf.h
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/minilibx_macos/mlx.h
+
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/read_file.c
+fdf.h
+/Users/tnichell/Desktop/варианты фдф/fdf не трогать/fdf/fdf.h
+fcntl.h
+-
+
