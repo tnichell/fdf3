@@ -65,7 +65,7 @@ int     get_width(char *file_name)
     get_next_line(fd, &line);
     width = wordcount(line, ' ');
     free(line);
-    close(fd);
+   // close(fd);
     return (width);
 }
 
@@ -74,6 +74,8 @@ int ft_isnumber(const char *s)
 	int i;
 
 	i = 0;
+	if (s[0] == '-')
+		i++;
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
@@ -82,6 +84,7 @@ int ft_isnumber(const char *s)
 	}
 	return (1);
 }
+
 void    error()
 {
 	ft_putstr("ERROR\n");
@@ -98,11 +101,11 @@ void     stop(char *s2, t_ili *z_line)
 		error();
 	while (s2[i])
 	{
-		if ((s2[i] < 'A' || s2[i] > 'F') || !ft_isdigit(s2[i]))
+		if (!((s2[i] >= 'A' && s2[i] <= 'F') || ft_isdigit(s2[i])))
 			error();
 		i++;
 	}
-	z_line->color = perevod(s2);
+	z_line->color = perevod(s2 + 2);
 }
 
 void    fill_matrix(t_ili *z_line, char *line)
@@ -116,7 +119,7 @@ void    fill_matrix(t_ili *z_line, char *line)
 	while (nums[i])
 	{
 		if ((s2 = ft_strchr(nums[i], ',')))
-			stop(s2, z_line);
+			stop(s2, z_line + i);
 		else
 		{
 			if (!ft_isnumber(nums[i]))
@@ -128,26 +131,27 @@ void    fill_matrix(t_ili *z_line, char *line)
 	}
 }
 
-void    read_file(char *file_name, fdf *data)
+void    read_file(char *file_name, fdf **data)
 {
 	int fd;
 	char *line;
 	int i;
 
-	data->height = get_height(file_name);
-	data->width = get_width(file_name);
-	data->z_matrix = (t_ili **)malloc(sizeof(t_ili *) * (data->height + 1));
+	(*data)->height = get_height(file_name);
+	(*data)->width = get_width(file_name);
+	(*data)->z_matrix = (t_ili **)malloc(sizeof(t_ili *) * ((*data)->height + 1));
 	i = 0;
-	while (i <= data->height)
-		data->z_matrix[i++] = (t_ili *)malloc(sizeof(t_ili) * (data->width + 1));
+	while (i <= (*data)->height)
+		(*data)->z_matrix[i++] = (t_ili *)malloc(sizeof(t_ili) * ((*data)->width + 1));
 	fd = open(file_name, O_RDONLY, 0);
 	i = 0;
 	while (get_next_line(fd, &line))
 	{
-		fill_matrix(data->z_matrix[i], line);
+		printf("%s\n", line);
+		fill_matrix((*data)->z_matrix[i], line);
 		free(line);
 		i++;
 	}
 	close(fd);
-	data->z_matrix[i] = NULL;
+	(*data)->z_matrix[i] = NULL;
 }

@@ -41,7 +41,7 @@ void isometricz(float *x, float *y, float z, float tetta);
 void isometricy(float *x, float y, float *z, float tetta);
 void isometricx(float x, float *y, float *z, float tetta);
 float   mod(float i);
-void    read_file(char *data, fdf *data2);
+void    read_file(char *data, fdf **data2);
 void    bresenham(fdf *data);
 void 	draw(fdf *data);
 
